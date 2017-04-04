@@ -84,6 +84,7 @@ public class Fenetre extends JFrame implements ActionListener {
 		boutonAtelier.addActionListener(this);
 		boutonEnfant.addActionListener(this);
 		boutonListAtelier.addActionListener(this);
+		boutonListEnfant.addActionListener(this);
 
 	}
 
