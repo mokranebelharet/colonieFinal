@@ -110,8 +110,8 @@ public class AtelierServiceImpl implements AtelierService {
 			Integer nomDonne = null;
 			Integer prenomDonne = null;
 			for (Enfant element : listEnfant) {
-				if (nomDonne.equals(enf.getNomEnfant()) && prenomDonne.equals(enf.getPrenomEnfant())) {
-					idEnfantSuppr = enf.getId();
+				if (nomDonne.equals(element.getNomEnfant()) && prenomDonne.equals(element.getPrenomEnfant())) {
+					idEnfantSuppr = element.getId();
 				}
 			}
 		} catch (DAOException e) {
@@ -132,7 +132,7 @@ public class AtelierServiceImpl implements AtelierService {
 			System.out.println("1");
 			Integer nomDonne = null;
 			for (Atelier element : listAtelier) {
-				if (nomDonne.equals(at.getNomAtelier())) {
+				if (nomDonne.equals(element.getNomAtelier())) {
 					idAtelierSuppr = at.getNumAtelier();
 				}
 			}
