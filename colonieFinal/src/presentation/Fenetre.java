@@ -32,8 +32,8 @@ public class Fenetre extends JFrame implements ActionListener {
 	JButton boutonEnfant = new JButton("Ajouter");
 	JButton boutonListAtelier = new JButton("Lister ");
 	JButton boutonListEnfant = new JButton(" Lister");
-	JButton boutonGerAtelier = new JButton("Gérer");
-	JButton boutonGerEnfant = new JButton("Gérer");
+	JButton boutonGerAtelier = new JButton("Supprimer");
+	JButton boutonGerEnfant = new JButton("Supprimer");
 
 	public Fenetre() {
 		super();
@@ -98,7 +98,7 @@ public class Fenetre extends JFrame implements ActionListener {
 			atelier = new AjoutAtelier();
 		else if (e.getSource().equals(boutonEnfant))
 			enfant = new AjoutEnfant();
-		else if (e.getSource().equals(boutonListAtelier))
+		else if (e.getSource().equals(boutonListAtelier)){
 			try {
 				liste = AtelierServiceImpl.getInstance().getListAtelier();
 				for (Atelier elt : liste) {
@@ -108,8 +108,9 @@ public class Fenetre extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+		}
 		
-		else if (e.getSource().equals(boutonListEnfant))
+		else if (e.getSource().equals(boutonListEnfant)){
 			try {
 				listEnf = AtelierServiceImpl.getInstance().getListEnfant();
 				for (Enfant elt : listEnf) {
@@ -119,6 +120,12 @@ public class Fenetre extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+		}
+		
+		else if (e.getSource().equals(boutonGerAtelier)){
+			
+			AtelierServiceImpl.getInstance().supprimerAtelier(Atelier atl);
+		}
 		
 
 	}
