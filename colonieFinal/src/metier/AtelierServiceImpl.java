@@ -22,7 +22,7 @@ public class AtelierServiceImpl implements AtelierService {
 
 	public static synchronized AtelierService getInstance() {
 		if (instance == null) {
-			instance = new AtelierServiceImpl();
+			instance = new AtelierServiceMock();
 		}
 		return instance;
 	} //////////////////////////////////////////////////////////////////
@@ -97,4 +97,49 @@ public class AtelierServiceImpl implements AtelierService {
 		 * 
 		 * return null; }
 		 */
+
+	@Override
+	public Integer supprimerEnfant(Enfant enf) throws AtelierServiceException {
+		Integer idEnfantSuppr = null;
+		try {
+			System.out.println("a");
+			List<Enfant> listEnfant = new ArrayList<Enfant>();
+			System.out.println("b");
+			listEnfant = (EnfantDAOImpl.getInstance().selectAll());
+			System.out.println("c");
+			Integer nomDonne = null;
+			Integer prenomDonne = null;
+			for (Enfant element : listEnfant) {
+				if (nomDonne.equals(enf.getNomEnfant()) && prenomDonne.equals(enf.getPrenomEnfant())) {
+					idEnfantSuppr = enf.getId();
+				}
+			}
+		} catch (DAOException e) {
+			e.printStackTrace();
+			throw new AtelierServiceException("Erreur lors de l'extraction de l'enfant");
+		}
+		return idEnfantSuppr;
+	}
+
+	@Override
+	public Integer supprimerAtelier(Atelier at) throws AtelierServiceException {
+		Integer idAtelierSuppr = null;
+		try {
+			System.out.println("-1");
+			List<Atelier> listAtelier = new ArrayList<Atelier>();
+			System.out.println("0");
+			listAtelier = (AtelierDAOImpl.getInstance().selectAll());
+			System.out.println("1");
+			Integer nomDonne = null;
+			for (Atelier element : listAtelier) {
+				if (nomDonne.equals(at.getNomAtelier())) {
+					idAtelierSuppr = at.getNumAtelier();
+				}
+			}
+		} catch (DAOException e) {
+			e.printStackTrace();
+			throw new AtelierServiceException("Erreur lors de l'extraction de l'enfant");
+		}
+		return idAtelierSuppr;
+	}
 }
