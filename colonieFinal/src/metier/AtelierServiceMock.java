@@ -37,6 +37,16 @@ public class AtelierServiceMock implements AtelierService {
 		return listeAtelierVide;
 	}
 
+	@Override
+	public void supprimerEnfant(Enfant enf) throws AtelierServiceException {
+		System.out.println("Enfant retiré de la colonie !");
+	}
+
+	@Override
+	public void supprimerAtelier(Atelier at) throws AtelierServiceException {
+		System.out.println("Atelier retiré de la colonie !");
+	}
+
 	/*
 	 * @Override public Integer ageMoyenAtelier() { Integer ageMoyenAtelierMock
 	 * = 3; return ageMoyenAtelierMock; }

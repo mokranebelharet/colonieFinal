@@ -42,6 +42,24 @@ public interface AtelierService {
 	 */
 	List<Atelier> getListAtelier() throws AtelierServiceException;
 
+	/**
+	 * Permet a l'utilisateur de supprimer un enfant de la colonie
+	 * 
+	 * @param enf
+	 *            : enfant qui va etre supprimé
+	 * @throws AtelierServiceException
+	 */
+	void supprimerEnfant(Enfant enf) throws AtelierServiceException;
+
+	/**
+	 * Permet a l'utilisateur de supprimer un atelier de la colonie
+	 * 
+	 * @param at
+	 *            : atelier qui va etre supprimé
+	 * @throws AtelierServiceException
+	 */
+	void supprimerAtelier(Atelier at) throws AtelierServiceException;
+
 	// Integer ageMoyenAtelier();
 
 	// List<Enfant> getListEnfantDansAtelier() throws AtelierServiceException;
