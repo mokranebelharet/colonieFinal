@@ -29,8 +29,8 @@ public class Fenetre extends JFrame implements ActionListener {
 
 	JButton boutonAtelier = new JButton("Ajouter");
 	JButton boutonEnfant = new JButton("Ajouter");
-	JButton boutonModifAtelier = new JButton("Modifier ");
-	JButton boutonModifEnfant = new JButton(" Modifier");
+	JButton boutonListAtelier = new JButton("Lister ");
+	JButton boutonListEnfant = new JButton(" Lister");
 	JButton boutonGerAtelier = new JButton("Gérer");
 	JButton boutonGerEnfant = new JButton("Gérer");
 
@@ -41,8 +41,8 @@ public class Fenetre extends JFrame implements ActionListener {
 
 		boutonAtelier.setPreferredSize(new Dimension(150, 50));
 		boutonEnfant.setPreferredSize(new Dimension(150, 50));
-		boutonModifAtelier.setPreferredSize(new Dimension(150, 50));
-		boutonModifEnfant.setPreferredSize(new Dimension(150, 50));
+		boutonListAtelier.setPreferredSize(new Dimension(150, 50));
+		boutonListEnfant.setPreferredSize(new Dimension(150, 50));
 		boutonGerAtelier.setPreferredSize(new Dimension(150, 50));
 		boutonGerEnfant.setPreferredSize(new Dimension(150, 50));
 
@@ -50,14 +50,14 @@ public class Fenetre extends JFrame implements ActionListener {
 		content.setPreferredSize(new Dimension(250, 200));
 		content.setBorder(BorderFactory.createTitledBorder("Atelier"));
 		content.add(boutonAtelier);
-		content.add(boutonModifAtelier);
+		content.add(boutonListAtelier);
 		content.add(boutonGerAtelier);
 
 		JPanel content2 = new JPanel();
 		content2.setPreferredSize(new Dimension(250, 200));
 		content2.setBorder(BorderFactory.createTitledBorder("Enfant"));
 		content2.add(boutonEnfant);
-		content2.add(boutonModifEnfant);
+		content2.add(boutonListEnfant);
 		content2.add(boutonGerEnfant);
 
 		JPanel content3 = new JPanel();
@@ -82,7 +82,7 @@ public class Fenetre extends JFrame implements ActionListener {
 
 		boutonAtelier.addActionListener(this);
 		boutonEnfant.addActionListener(this);
-		boutonModifAtelier.addActionListener(this);
+		boutonListAtelier.addActionListener(this);
 
 	}
 
@@ -95,7 +95,7 @@ public class Fenetre extends JFrame implements ActionListener {
 			atelier = new AjoutAtelier();
 		else if (e.getSource().equals(boutonEnfant))
 			enfant = new AjoutEnfant();
-		else if (e.getSource().equals(boutonModifAtelier))
+		else if (e.getSource().equals(boutonListAtelier))
 			try {
 				liste = AtelierServiceImpl.getInstance().getListAtelier();
 				for (Atelier elt : liste) {
@@ -105,6 +105,7 @@ public class Fenetre extends JFrame implements ActionListener {
 				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
+		
 
 	}
 
