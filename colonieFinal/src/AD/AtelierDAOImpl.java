@@ -63,7 +63,7 @@ public class AtelierDAOImpl extends DAO implements AtelierDAO {
 		ResultSet rs = null;
 
 		// creation et execution de la requete
-		String requete = "SELECT * FROM COLONIE";
+		String requete = "SELECT * FROM atelier";
 		Statement stmt = null;
 		try {
 			stmt = con.createStatement();
