@@ -20,6 +20,7 @@ import javax.swing.plaf.ButtonUI;
 import javax.swing.plaf.metal.MetalButtonUI;
 
 import entite.Atelier;
+import entite.Enfant;
 import metier.AtelierServiceException;
 import metier.AtelierServiceImpl;
 
@@ -91,6 +92,7 @@ public class Fenetre extends JFrame implements ActionListener {
 		AjoutAtelier atelier;
 		AjoutEnfant enfant;
 		List<Atelier> liste = new ArrayList<Atelier>();
+		List<Enfant> listEnf = new ArrayList<Enfant>();
 		if (e.getSource().equals(boutonAtelier))
 			atelier = new AjoutAtelier();
 		else if (e.getSource().equals(boutonEnfant))
@@ -100,6 +102,17 @@ public class Fenetre extends JFrame implements ActionListener {
 				liste = AtelierServiceImpl.getInstance().getListAtelier();
 				for (Atelier elt : liste) {
 					System.out.println(elt.getNomAtelier());
+				}
+			} catch (AtelierServiceException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
+		else if (e.getSource().equals(boutonListEnfant))
+			try {
+				listEnf = AtelierServiceImpl.getInstance().getListEnfant();
+				for (Enfant elt : listEnf) {
+					System.out.println(elt.getNomEnfant() + " " +elt.getPrenomEnfant());
 				}
 			} catch (AtelierServiceException e1) {
 				// TODO Auto-generated catch block
