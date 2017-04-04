@@ -123,8 +123,9 @@ public class Fenetre extends JFrame implements ActionListener {
 		}
 		
 		else if (e.getSource().equals(boutonGerAtelier)){
-			
-			AtelierServiceImpl.getInstance().supprimerAtelier(Atelier atl);
+			SupprimerAtel suppAtelier = new SupprimerAtel();
+			String nomAtel = answrSuppAtelier.getText();
+			AtelierServiceImpl.getInstance().supprimerAtelier(String nomAtel);
 		}
 		
 
