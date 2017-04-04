@@ -6,6 +6,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import AD.AtelierDAO;
 import AD.AtelierDAOImpl;
 import AD.DAOException;
 import AD.EnfantDAOImpl;
@@ -38,6 +39,17 @@ public class AtelierServiceImpl implements AtelierService {
 	}
 
 	@Override
+	public void supprimerEnfant(Enfant enf) throws AtelierServiceException {
+		try {
+			EnfantDAOImpl.getInstance().supprimer(enf);
+		} catch (DAOException e) {
+			e.printStackTrace();
+			throw new AtelierServiceException("Erreur lors de la suppression d'un enfant");
+		}
+
+	}
+
+	@Override
 	public void ajoutAtelier(Atelier atelier) throws AtelierServiceException {
 		try {
 			AtelierDAOImpl.getInstance().insert(atelier);
@@ -45,6 +57,17 @@ public class AtelierServiceImpl implements AtelierService {
 			e.printStackTrace();
 			throw new AtelierServiceException("Erreur lors de l'ajout d'un enfant");
 		}
+	}
+
+	@Override
+	public void supprimerAtelier(Atelier at) throws AtelierServiceException {
+		try {
+			AtelierDAOImpl.getInstance().supprimer(at);
+		} catch (DAOException e) {
+			e.printStackTrace();
+			throw new AtelierServiceException("Erreur lors de la suppression d'un enfant");
+		}
+
 	}
 
 	@Override
@@ -98,48 +121,53 @@ public class AtelierServiceImpl implements AtelierService {
 		 * return null; }
 		 */
 
-	@Override
-	public Integer supprimerEnfant(Enfant enf) throws AtelierServiceException {
-		Integer idEnfantSuppr = null;
-		try {
-			System.out.println("a");
-			List<Enfant> listEnfant = new ArrayList<Enfant>();
-			System.out.println("b");
-			listEnfant = (EnfantDAOImpl.getInstance().selectAll());
-			System.out.println("c");
-			Integer nomDonne = null;
-			Integer prenomDonne = null;
-			for (Enfant element : listEnfant) {
-				if (nomDonne.equals(element.getNomEnfant()) && prenomDonne.equals(element.getPrenomEnfant())) {
-					idEnfantSuppr = element.getId();
-				}
-			}
-		} catch (DAOException e) {
-			e.printStackTrace();
-			throw new AtelierServiceException("Erreur lors de l'extraction de l'enfant");
-		}
-		return idEnfantSuppr;
-	}
+	// @Override
+	// public Integer supprimerEnfant(Enfant enf) throws AtelierServiceException
+	// {
+	// Integer idEnfantSuppr = null;
+	// try {
+	// System.out.println("a");
+	// List<Enfant> listEnfant = new ArrayList<Enfant>();
+	// System.out.println("b");
+	// listEnfant = (EnfantDAOImpl.getInstance().selectAll());
+	// System.out.println("c");
+	// Integer nomDonne = null;
+	// Integer prenomDonne = null;
+	// for (Enfant element : listEnfant) {
+	// if (nomDonne.equals(element.getNomEnfant()) &&
+	// prenomDonne.equals(element.getPrenomEnfant())) {
+	// idEnfantSuppr = element.getId();
+	// }
+	// }
+	// } catch (DAOException e) {
+	// e.printStackTrace();
+	// throw new AtelierServiceException("Erreur lors de l'extraction de
+	// l'enfant");
+	// }
+	// return idEnfantSuppr;
+	// }
 
-	@Override
-	public Integer supprimerAtelier(Atelier at) throws AtelierServiceException {
-		Integer idAtelierSuppr = null;
-		try {
-			System.out.println("-1");
-			List<Atelier> listAtelier = new ArrayList<Atelier>();
-			System.out.println("0");
-			listAtelier = (AtelierDAOImpl.getInstance().selectAll());
-			System.out.println("1");
-			Integer nomDonne = null;
-			for (Atelier element : listAtelier) {
-				if (nomDonne.equals(element.getNomAtelier())) {
-					idAtelierSuppr = at.getNumAtelier();
-				}
-			}
-		} catch (DAOException e) {
-			e.printStackTrace();
-			throw new AtelierServiceException("Erreur lors de l'extraction de l'enfant");
-		}
-		return idAtelierSuppr;
-	}
+	// @Override
+	// public Integer supprimerAtelier(Atelier at) throws
+	// AtelierServiceException {
+	// Integer idAtelierSuppr = null;
+	// try {
+	// System.out.println("-1");
+	// List<Atelier> listAtelier = new ArrayList<Atelier>();
+	// System.out.println("0");
+	// listAtelier = (AtelierDAOImpl.getInstance().selectAll());
+	// System.out.println("1");
+	// Integer nomDonne = null;
+	// for (Atelier element : listAtelier) {
+	// if (nomDonne.equals(element.getNomAtelier())) {
+	// idAtelierSuppr = at.getNumAtelier();
+	// }
+	// }
+	// } catch (DAOException e) {
+	// e.printStackTrace();
+	// throw new AtelierServiceException("Erreur lors de l'extraction de
+	// l'enfant");
+	// }
+	// return idAtelierSuppr;
+	// }
 }

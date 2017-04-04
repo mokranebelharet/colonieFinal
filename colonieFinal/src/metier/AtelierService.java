@@ -49,7 +49,7 @@ public interface AtelierService {
 	 *            : enfant qui va etre supprimé
 	 * @throws AtelierServiceException
 	 */
-	Integer supprimerEnfant(Enfant enf) throws AtelierServiceException;
+	void supprimerEnfant(Enfant enf) throws AtelierServiceException;
 
 	/**
 	 * Permet a l'utilisateur de supprimer un atelier de la colonie
@@ -58,7 +58,7 @@ public interface AtelierService {
 	 *            : atelier qui va etre supprimé
 	 * @throws AtelierServiceException
 	 */
-	Integer supprimerAtelier(Atelier at) throws AtelierServiceException;
+	void supprimerAtelier(Atelier at) throws AtelierServiceException;
 
 	// Integer ageMoyenAtelier();
 
